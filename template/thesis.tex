@@ -1,0 +1,64 @@
+% LaTeX style file for Ph.D. thesis document
+% Institution: Kyungpook National University (KNU)
+% 
+% (c) Gwenaelle Cunha Sergio (gwena.cs@gmail.com)
+%
+%% Please note that this was not made for monetary purposes and it is free for anyone to use. However, if you do use it or modify it, please acknowledge this work by mentioning this original source code.
+% 
+
+\documentclass[12pt]{article}
+
+\usepackage{thesis}
+\input{tex/packages.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Thesis information %
+%%%%%%%%%%%%%%%%%%%%%%
+\title{Nulla malesuada porttitor diam donec felis erat, congue non vo-lutpat at tincidunt tristique libero}
+\author{Gwenaelle Cunha Sergio}
+\supervisor{First Last Name}
+\department{School of Electronics Engineering, Major in Signal Processing}
+\profA{Prof. A}
+\profB{Prof. B}
+\profC{Prof. C}
+\profD{Prof. D}
+\profE{Prof. E}
+
+\titlekorean{전직대통령의 신분과 예우에 관하여는 법률로 정한다}
+\authorkorean{한국 이름}
+\supervisorkorean{지도교수 이름}
+\departmentkorean{경북대학교 대학원 전자공학부 신호처리전공}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Document starts here %
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\makecover
+\makeinnercover
+\pagebreak
+
+\pagenumbering{roman} %\frontmatter
+\tableofcontents \pagebreak
+\listoffigures \pagebreak
+%\addcontentsline{toc}{section}{\listtablename}
+\listoftables \pagebreak
+
+\pagenumbering{arabic} %\mainmatter
+\setstretch{1.85}  % Times New Roman 12pt
+\justifying
+\input{tex/introduction} \pagebreak
+\input{tex/conclusion.tex} \pagebreak
+
+%\section*{References}
+\setstretch{1.0}
+\phantomsection~\label{sec:ref}
+\addcontentsline{toc}{section}{References}
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography.bib}
+\pagebreak
+
+\input{tex/abstract_english.tex} \pagebreak
+\input{tex/abstract_korean.tex}
+
+\end{document}

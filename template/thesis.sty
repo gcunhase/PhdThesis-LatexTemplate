@@ -1,0 +1,275 @@
+% LaTeX style file for Ph.D. thesis document
+% Institution: Kyungpook National University (KNU)
+% 
+% (c) Gwenaelle Cunha Sergio (gwena.cs@gmail.com)
+%
+%% Please note that this was not made for monetary purposes and it is free for anyone to use. However, if you do use it or modify it, please acknowledge this work by mentioning this original source code.
+%
+% Note:
+% Converting Regular to Italic fonts:
+%    1. Download https://glyphsapp.com/
+%    2. Filter > Transformations > 10degree slant (https://glyphsapp.com/tutorials/easy-oblique)
+%
+
+%%%%% My notes %%%%%
+% Use \RequirePackage instead of \usepackage
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{thesis}
+  [2020/03/21 v0.01 LaTeX package for KNU's Ph.D. Thesis]
+
+% Document spacing
+\RequirePackage[paperheight=11.69in,paperwidth=8.27in,left=1.57in,right=1.57in,top=1.5in,bottom=1.5in,headheight=1in]{geometry}
+
+%%%%%%%%%%%%
+% Packages %
+%%%%%%%%%%%%
+% Date
+\RequirePackage[USenglish]{babel}
+\RequirePackage[useregional]{datetime2}
+\RequirePackage{lipsum}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section with Roman Numerals %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{fontspec} % Requires xelatex compiler
+\RequirePackage{times} %\setmainfont{Times New Roman}
+\RequirePackage[utf8x]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{kotex} % for korean text
+\RequirePackage{titlesec}
+\RequirePackage{slantsc} % http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/slantsc/slantsc.pdf
+\RequirePackage{bold-extra} % allows for bfseries and scshape to be used together
+\renewcommand*{\thesection}{\Roman{section}.} 
+\titleformat{\section}
+  {\fontsize{18pt}{21.6pt}\centering\bfseries\scshape}{\thesection}{1em}{}
+
+%%%%%%%%%%%%%%%%
+% Custom fonts %
+%%%%%%%%%%%%%%%%
+% Useful link ("Toying with fonts": http://huisaddison.com/blog/fonts-in-latex.html)
+% usefont parameters: https://www.latex-project.org/help/documentation/fntguide.pdf
+%\usefont{<encoding>}{<family>}{<series>}{<shape>}
+% encoding: T1
+% m: medium, b: bold, eb: extra bold, ub: ultra bold
+% n: normal, it: italic
+
+%\RequirePackage[no-math]{fontspec} % Requires xelatex compiler
+
+%% mdseries = normal weight
+%% bfseries = bold
+% Title font
+\newfontfamily{\titlefontfamily}{Batang}[Extension = .ttf, Path = fonts/, UprightFont = *-R, BoldFont = *-BD, ItalicFont = unbatang-IT, Ligatures=TeX]
+\renewcommand*{\titlefontregular}{\titlefontfamily\mdseries}
+\newcommand*{\titlefont}{\titlefontfamily\bfseries}
+\newcommand*{\titlefontit}{\titlefontfamily\itshape}
+
+% Footer font
+\newfontfamily{\footerfontfamily}{malgungothic}[Extension = .ttf, Path = fonts/, UprightFont = *-R, BoldFont = *-BD, ItalicFont = *-IT, Ligatures=TeX]
+\newcommand*{\footerfontregular}{\footerfontfamily\mdseries}
+\newcommand*{\footerfont}{\footerfontfamily\bfseries}
+\newcommand*{\footerfontitalic}{\footerfontfamily\itshape}
+
+%%%%%%%%%%%%%%%%
+%  Cover page  %
+%%%%%%%%%%%%%%%%
+% \newcommande{\name}[number of arguments]{definition}
+%\newcommand*{\@supervisor}{\texttt{\string\supervisor} currently not set. Please fix this.}
+\renewcommand*{\author}[1]{\gdef\@author{#1}}
+\newcommand*{\supervisor}[1]{\gdef\@supervisor{#1}}
+\newcommand*{\department}[1]{\gdef\@department{#1}}
+\renewcommand*{\title}[1]{\gdef\@title{#1}}
+\newcommand*{\makecover}{%
+  \begin{titlepage}
+  \vspace{\baselineskip}
+  \begin{Center}
+  \textbf{Thesis for the Degree of Ph.D.}\par
+  \end{Center}
+
+  % Title
+  \vspace{\baselineskip}
+  \vspace{\baselineskip}
+  \vspace{\baselineskip}
+  \begin{Center}
+  \setstretch{1.5}{\fontsize{21pt}{25.2pt}\titlefont{\@title}\par}
+  \end{Center}\par
+  
+  % Department
+  \vspace{\baselineskip}
+  \vspace{\baselineskip}
+  \begin{Center}
+   \fontsize{12pt}{}\titlefont{\@department}
+   \end{Center}\par
+   \begin{Center}
+   \fontsize{12pt}{}\titlefont{The Graduate School}
+   \end{Center}\par
+   
+   % Author
+   \vspace{\baselineskip}
+   \vspace{\baselineskip}
+   \vspace{\baselineskip}
+   \begin{Center}
+    {\fontsize{14pt}{16.8pt}\titlefont{\@author}\par}
+   \end{Center}\par
+   \vspace*{\fill}
+   
+   % Date
+   \begin{Center}
+   {\DTMlangsetup[en-US]{showdayofmonth=false}
+   \fontsize{12pt}{}\titlefont{\today}}
+   \end{Center}\par
+   
+   % Graduate School and University name
+   \vspace{\baselineskip}
+   \begin{Center}
+   {\fontsize{16pt}{19.2pt}\footerfont{The Graduate School}\par}
+   \end{Center}
+   % University name
+   \begin{Center}
+   {\fontsize{16pt}{19.2pt}\footerfont{Kyungpook National University}\par}
+   \end{Center}\par
+  {\pagebreak}
+  \end{titlepage}
+}
+
+%%%%%%%%%%%%%%%%%%%%
+% Inner cover page %
+%%%%%%%%%%%%%%%%%%%%
+\newcommand*{\profA}[1]{\gdef\@profA{#1}}
+\newcommand*{\profB}[1]{\gdef\@profB{#1}}
+\newcommand*{\profC}[1]{\gdef\@profC{#1}}
+\newcommand*{\profD}[1]{\gdef\@profD{#1}}
+\newcommand*{\profE}[1]{\gdef\@profE{#1}}
+\newcommand*{\makeinnercover}{%
+  \begin{titlepage}
+    \vspace{\baselineskip}
+
+    \setlength{\parskip}{0.0pt}
+
+    \vspace{\baselineskip}
+    \begin{Center}
+    \setstretch{1.1}{\fontsize{21pt}{25.2pt}\titlefont{\@title}\par}
+    \end{Center}\par
+    
+    \vspace{0.3}
+    \setstretch{1}
+    \begin{Center}
+        {\fontsize{14pt}{16.8pt}\titlefont{\@author}\par}
+    \end{Center}\par
+
+    \vspace{0.3}
+    \begin{Center}
+    {\fontsize{12pt}{}\titlefont School of Electronics Engineering, Major in Signal Processing \\ The Graduate School}
+    \end{Center}\par
+
+    \begin{Center}
+    {\fontsize{12pt}{}\titlefont Supervised by Professor \@supervisor}
+    \end{Center}\par
+
+    \begin{Center}
+    {\fontsize{12pt}{}\titlefont Approved as a qualified thesis of \@author \\ for the degree of Ph.D. by the Evaluation Committee}
+    \end{Center}\par
+    
+    \begin{Center}
+        {\DTMlangsetup[en-US]{showdayofmonth=false}
+       \fontsize{12pt}{}\titlefont\textbf{\today}}
+    \end{Center}\par
+    
+    \vspace{\baselineskip}
+    \vspace{\baselineskip}
+    \vspace{\baselineskip}
+    
+    % Committee members
+    \setstretch{2.0}
+    \begin{flushright}
+        \begin{tabular}{c l}
+        {\fontsize{12pt}{}\titlefontregular Chairperson} & \underline{\makebox[2in][c]{\fontsize{12pt}{}\titlefont \@profA}}\\ 
+            & \underline{\makebox[2in][c]{\fontsize{12pt}{}\titlefont \@profB}}\\  
+            & \underline{\makebox[2in][c]{\fontsize{12pt}{}\titlefont \@profC}}\\  
+            & \underline{\makebox[2in][c]{\fontsize{12pt}{}\titlefont \@profD}}\\  
+            & \underline{\makebox[2in][c]{\fontsize{12pt}{}\titlefont \@profE}}\\  
+        \end{tabular}
+    \end{flushright}
+
+    \vspace*{\vfill}
+    \setstretch{1.2}
+    \begin{Center}
+    {\fontsize{14pt}{16.8pt}\titlefont The Graduate School Council \\  Kyungpook National University}\par}
+    \end{Center}\par
+  {\pagebreak}
+  \end{titlepage}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Abstract header - English %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand*{\makeabstractheader}{%
+    \vspace{\baselineskip}
+    \begin{table}[h!]
+    \centering
+        \begin{tabular}{p{10cm}}
+            {\centering\setstretch{1.5}\fontsize{14pt}{16.8pt}\titlefont{\@title}\par}
+        \end{tabular}
+    \end{table}
+    
+    \setstretch{1}
+    \begin{Center}
+    {\fontsize{12pt}{14.8pt}\titlefont{\@author}\par}
+    \end{Center}\par
+    
+    \vspace{0.2cm}
+    \begin{Center}
+    {\fontsize{12pt}{14.8pt}\titlefontit{School of Electronics Engineering \\ The Graduate School}}
+    \end{Center}
+    
+    \begin{Center}
+    {\fontsize{12pt}{14.8pt}\titlefontit{(Supervised by Professor \@supervisor)}\par}
+    \end{Center}\par
+    
+    \vspace{\baselineskip}
+    \setstretch{2.0}
+    \begin{FlushLeft}
+    {\fontsize{12pt}{14.8pt}\titlefontit{(Abstract)}\par}
+    \end{FlushLeft}\par
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Abstract header - Korean %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand*{\authorkorean}[1]{\gdef\@authorkorean{#1}}
+\newcommand*{\supervisorkorean}[1]{\gdef\@supervisorkorean{#1}}
+\newcommand*{\departmentkorean}[1]{\gdef\@departmentkorean{#1}}
+\renewcommand*{\titlekorean}[1]{\gdef\@titlekorean{#1}}
+\newcommand*{\makeabstractheaderkorean}{%
+    \vspace{\baselineskip}
+    \begin{table}[h!]
+    \centering
+        \begin{tabular}{p{10cm}}
+            {\centering\setstretch{1.7}\fontsize{14pt}{16.8pt}\titlefont{\@titlekorean}\par}
+        \end{tabular}
+    \end{table}
+    
+    \setstretch{1}
+    \begin{Center}
+    {\fontsize{12pt}{14.8pt}\titlefont{\@authorkorean}\par}
+    \end{Center}\par
+    
+    \vspace{\baselineskip}
+    \vspace{0.2cm}
+    \begin{Center}
+    {\fontsize{12pt}{14.8pt}\titlefontregular{\@departmentkorean}}
+    \end{Center}
+    
+    \begin{Center}
+    {\fontsize{12pt}{14.8pt}\titlefontregular{(지도교수 \@supervisorkorean)}\par}
+    \end{Center}\par
+    
+    \vspace{\baselineskip}
+    \vspace{\baselineskip}
+    \vspace{\baselineskip}
+    \setstretch{2.0}
+    \begin{FlushLeft}
+    {\fontsize{12pt}{14.8pt}\titlefontregular{(초록)}\par}
+    \end{FlushLeft}\par
+}
+
+\endinput
