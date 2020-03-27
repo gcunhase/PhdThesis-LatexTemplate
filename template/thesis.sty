@@ -5,11 +5,6 @@
 %
 %% Please note that this was not made for monetary purposes and it is free for anyone to use. However, if you do use it or modify it, please acknowledge this work by mentioning this original source code.
 %
-% Note:
-% Converting Regular to Italic fonts:
-%    1. Download https://glyphsapp.com/
-%    2. Filter > Transformations > 10degree slant (https://glyphsapp.com/tutorials/easy-oblique)
-%
 
 %%%%% My notes %%%%%
 % Use \RequirePackage instead of \usepackage
@@ -39,7 +34,6 @@
 \RequirePackage{titlesec}
 \RequirePackage{slantsc} % http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/slantsc/slantsc.pdf
 \RequirePackage{bold-extra} % allows for bfseries and scshape to be used together
-
 \renewcommand{\thesection}{\Roman{section}.}
 \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
@@ -64,7 +58,7 @@
 
 % Title font
 \newfontfamily{\titlefontfamily}{Batang}[Extension = .ttf, Path = fonts/, UprightFont = *-R, BoldFont = *-BD, ItalicFont = unbatang-IT, Ligatures=TeX]
-\renewcommand*{\titlefontregular}{\titlefontfamily\mdseries}
+\newcommand*{\titlefontregular}{\titlefontfamily\mdseries}
 \newcommand*{\titlefont}{\titlefontfamily\bfseries}
 \newcommand*{\titlefontit}{\titlefontfamily\itshape}
 
@@ -97,17 +91,17 @@
   \begin{Center}
   \setstretch{1.5}{\fontsize{21pt}{25.2pt}\titlefont{\@title}\par}
   \end{Center}\par
-  
+
   % Department
   \vspace{\baselineskip}
   \vspace{\baselineskip}
   \begin{Center}
-   \fontsize{12pt}{}\titlefont{\@department}
+   \fontsize{12pt}{14.8pt}\titlefont{\@department}
    \end{Center}\par
    \begin{Center}
-   \fontsize{12pt}{}\titlefont{The Graduate School}
+   \fontsize{12pt}{14.8pt}\titlefont{The Graduate School}
    \end{Center}\par
-   
+
    % Author
    \vspace{\baselineskip}
    \vspace{\baselineskip}
@@ -116,13 +110,13 @@
     {\fontsize{14pt}{16.8pt}\titlefont{\@author}\par}
    \end{Center}\par
    \vspace*{\fill}
-   
+
    % Date
    \begin{Center}
    {\DTMlangsetup[en-US]{showdayofmonth=false}
-   \fontsize{12pt}{}\titlefont{\today}}
+   \fontsize{12pt}{14.8pt}\titlefont{\today}}
    \end{Center}\par
-   
+
    % Graduate School and University name
    \vspace{\baselineskip}
    \begin{Center}
@@ -154,7 +148,7 @@
     \begin{Center}
     \setstretch{1.1}{\fontsize{21pt}{25.2pt}\titlefont{\@title}\par}
     \end{Center}\par
-    
+
     \vspace{0.3}
     \setstretch{1}
     \begin{Center}
@@ -163,43 +157,43 @@
 
     \vspace{0.3}
     \begin{Center}
-    {\fontsize{12pt}{}\titlefont School of Electronics Engineering, Major in Signal Processing \\ The Graduate School}
+    {\fontsize{12pt}{14.8pt}\titlefont School of Electronics Engineering, Major in Signal Processing \\ The Graduate School}
     \end{Center}\par
 
     \begin{Center}
-    {\fontsize{12pt}{}\titlefont Supervised by Professor \@supervisor}
+    {\fontsize{12pt}{14.8pt}\titlefont Supervised by Professor \@supervisor}
     \end{Center}\par
 
     \begin{Center}
-    {\fontsize{12pt}{}\titlefont Approved as a qualified thesis of \@author \\ for the degree of Ph.D. by the Evaluation Committee}
+    {\fontsize{12pt}{14.8pt}\titlefont Approved as a qualified thesis of \@author \\ for the degree of Ph.D. by the Evaluation Committee}
     \end{Center}\par
-    
+
     \begin{Center}
         {\DTMlangsetup[en-US]{showdayofmonth=false}
-       \fontsize{12pt}{}\titlefont\textbf{\today}}
+       \fontsize{12pt}{14.8pt}\titlefont\textbf{\today}}
     \end{Center}\par
-    
+
     \vspace{\baselineskip}
     \vspace{\baselineskip}
     \vspace{\baselineskip}
-    
+
     % Committee members
     \setstretch{2.0}
     \begin{flushright}
         \begin{tabular}{c l}
-        {\fontsize{12pt}{}\titlefontregular Chairperson} & \underline{\makebox[2in][c]{\fontsize{12pt}{}\titlefont \@profA}}\\ 
-            & \underline{\makebox[2in][c]{\fontsize{12pt}{}\titlefont \@profB}}\\  
-            & \underline{\makebox[2in][c]{\fontsize{12pt}{}\titlefont \@profC}}\\  
-            & \underline{\makebox[2in][c]{\fontsize{12pt}{}\titlefont \@profD}}\\  
-            & \underline{\makebox[2in][c]{\fontsize{12pt}{}\titlefont \@profE}}\\  
+        {\fontsize{12pt}{14.8pt}\titlefontregular Chairperson} & \underline{\makebox[2in][c]{\fontsize{12pt}{14.8pt}\titlefont \@profA}}\\
+            & \underline{\makebox[2in][c]{\fontsize{12pt}{14.8pt}\titlefont \@profB}}\\
+            & \underline{\makebox[2in][c]{\fontsize{12pt}{14.8pt}\titlefont \@profC}}\\
+            & \underline{\makebox[2in][c]{\fontsize{12pt}{14.8pt}\titlefont \@profD}}\\
+            & \underline{\makebox[2in][c]{\fontsize{12pt}{14.8pt}\titlefont \@profE}}\\
         \end{tabular}
     \end{flushright}
 
     \vspace*{\vfill}
     \setstretch{1.2}
     \begin{Center}
-    {\fontsize{14pt}{16.8pt}\titlefont The Graduate School Council \\  Kyungpook National University}\par}
-    \end{Center}\par
+    {\fontsize{14pt}{16.8pt}\titlefont The Graduate School Council \\  Kyungpook National University}
+    \end{Center}
   {\pagebreak}
   \end{titlepage}
 }
@@ -215,21 +209,21 @@
             {\centering\setstretch{1.5}\fontsize{14pt}{16.8pt}\titlefont{\@title}\par}
         \end{tabular}
     \end{table}
-    
+
     \setstretch{1}
     \begin{Center}
     {\fontsize{12pt}{14.8pt}\titlefont{\@author}\par}
     \end{Center}\par
-    
+
     \vspace{0.2cm}
     \begin{Center}
     {\fontsize{12pt}{14.8pt}\titlefontit{School of Electronics Engineering \\ The Graduate School}}
     \end{Center}
-    
+
     \begin{Center}
     {\fontsize{12pt}{14.8pt}\titlefontit{(Supervised by Professor \@supervisor)}\par}
     \end{Center}\par
-    
+
     \vspace{\baselineskip}
     \setstretch{2.0}
     \begin{FlushLeft}
@@ -240,10 +234,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Abstract header - Korean %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\renewcommand*{\authorkorean}[1]{\gdef\@authorkorean{#1}}
+\newcommand*{\authorkorean}[1]{\gdef\@authorkorean{#1}}
 \newcommand*{\supervisorkorean}[1]{\gdef\@supervisorkorean{#1}}
 \newcommand*{\departmentkorean}[1]{\gdef\@departmentkorean{#1}}
-\renewcommand*{\titlekorean}[1]{\gdef\@titlekorean{#1}}
+\newcommand*{\titlekorean}[1]{\gdef\@titlekorean{#1}}
 \newcommand*{\makeabstractheaderkorean}{%
     \vspace{\baselineskip}
     \begin{table}[h!]
