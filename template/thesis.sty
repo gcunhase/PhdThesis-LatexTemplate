@@ -48,18 +48,20 @@
 
 %%%%%%%%%%%%%%%%
 % Custom fonts %
-%%%%%%%%%%%%%%%%
-% Useful link ("Toying with fonts": http://huisaddison.com/blog/fonts-in-latex.html)
-% usefont parameters: https://www.latex-project.org/help/documentation/fntguide.pdf
+% 1. Converting Regular to Italic fonts:
+%    1. Download https://glyphsapp.com/
+%    2. Filter > Transformations > 10degree slant (https://glyphsapp.com/tutorials/easy-oblique)
+%
+% 2.1 Useful link ("Toying with fonts": http://huisaddison.com/blog/fonts-in-latex.html)
+% 2.2. usefont parameters: https://www.latex-project.org/help/documentation/fntguide.pdf
 %\usefont{<encoding>}{<family>}{<series>}{<shape>}
 % encoding: T1
 % m: medium, b: bold, eb: extra bold, ub: ultra bold
 % n: normal, it: italic
+% mdseries = normal weight
+% bfseries = bold
+%%%%%%%%%%%%%%%%
 
-%\RequirePackage[no-math]{fontspec} % Requires xelatex compiler
-
-%% mdseries = normal weight
-%% bfseries = bold
 % Title font
 \newfontfamily{\titlefontfamily}{Batang}[Extension = .ttf, Path = fonts/, UprightFont = *-R, BoldFont = *-BD, ItalicFont = unbatang-IT, Ligatures=TeX]
 \renewcommand*{\titlefontregular}{\titlefontfamily\mdseries}
