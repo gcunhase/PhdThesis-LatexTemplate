@@ -1,9 +1,6 @@
-<div align="center">
-  
 [![Template](https://img.shields.io/badge/Overleaf-Template-138A06.svg)](https://www.overleaf.com/latex/templates/phd-thesis-template-knu/wzwwnhnmbdjq)
-</div>
 
----
+# 
 
 LaTeX style file for KNU's Ph.D. thesis document
 
