@@ -2,7 +2,7 @@
 
 LaTeX style file for KNU's Ph.D. thesis document
 
-(c) Gwenaelle Cunha Sergio (gwena.cs@gmail.com)
+(c) Gwenaelle Cunha Sergio (gwena.cs@gmail.com) and Dennis Singh Moirangthem (mdennissingh@gmail.com)
 
 **Note 1**: Compile with `XeLaTeX` if you wish to use the same fonts I'm using. Otherwise, you can change it to the default fonts and it will compile with `pdfLaTeX`.
 
