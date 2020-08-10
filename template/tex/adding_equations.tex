@@ -1,0 +1,16 @@
+\section{How to add an equation}~\label{sec:equations}
+
+An example Eq.~\eqref{eqn:gru} is as follows.  
+\begin{equation}
+\vspace{0mm}
+\begin{aligned}
+\label{eqn:gru}
+& r_t = \sigma( W_{xr} x_t + W_{hr} h_{t-1}) \\
+& z_t = \sigma( W_{xz} x_t + W_{hz} h_{t-1}) \\
+& u_t = \tanh( W_{xu} x_t + W_{hu} (  r_t \odot h_{t-1}))\\
+& h_t =  z_t h_{t-1} + (1 - z_t) u_t\\
+\end{aligned}
+\vspace{0mm}
+\end{equation}
+where $\sigma(\cdot)$ and $\mbox{tanh}(\cdot)$ are the sigmoid and tangent hyperbolic activation functions, respectively, $\odot$ denotes the element-wise multiplication operator,
+and $\mathbf{r}_t$,  $\mathbf{z}_t$ are referred to as {\em reset}, {\em update} gates, respectively. $\mathbf{u}_t$ and  $\mathbf{h}_t$ are the candidate activation and the new hidden state of the GRU, respectively.

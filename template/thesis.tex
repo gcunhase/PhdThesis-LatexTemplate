@@ -5,9 +5,9 @@
 % and
 % (c) Dennis Singh Moirangthem (mdennissingh@gmail.com)
 %
-% Compile with XeLatex
-%
-% Please note that this was not made for monetary purposes and it is free for anyone to use. However, if you do use it or modify it, please acknowledge this work by mentioning this original source code.
+% Please note:
+%    1. Compile with XeLatex
+%    2. This was not made for monetary purposes and it is free for anyone to use. However, if you do use it or modify it, please acknowledge this work by mentioning this original source code.
 %
 
 \documentclass[12pt]{article}
@@ -18,19 +18,20 @@
 %%%%%%%%%%%%%%%%%%%%%%
 % Thesis information %
 %%%%%%%%%%%%%%%%%%%%%%
-\title{Nulla malesuada porttitor diam donec felis erat, congue non vo-lutpat at tincidunt tristique libero}
-\author{Gwenaelle Cunha Sergio}
-\supervisor{First Last Name}
-\department{School of Electronics Engineering, Major in Signal Processing}
-\profA{Prof. A}
-\profB{Prof. B}
-\profC{Prof. C}
-\profD{Prof. D}
-\profE{Prof. E}
 
-\titlekorean{전직대통령의 신분과 예우에 관하여는 법률로 정한다}
-\authorkorean{한국 이름}
-\supervisorkorean{지도교수 이름}
+\title{Thesis title line 1\\ Title line 2}
+\author{Your English Name}
+\supervisor{Prof. 1 \\Co-supervised by Professor Prof. 2}
+\department{School of Electronics Engineering, Major in Signal Processing}
+\profA{Prof. 1}
+\profB{Prof. 2}
+\profC{Prof. 3}
+\profD{Prof. 4}
+\profE{Prof. 5}
+
+\titlekorean{Title in Korean}
+\authorkorean{한국 이름 (Your Korean Name)}
+\supervisorkorean{지도교수 이름 (Prof. 1 Name in Korean) \\공동지도교수 (Prof. 2 Name in Korean)}
 \departmentkorean{경북대학교 대학원 전자공학부 신호처리전공}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -44,15 +45,62 @@
 
 \pagenumbering{roman} %\frontmatter
 \setstretch{1.5}
-\tableofcontents \pagebreak
-\listoffigures \pagebreak
-%\addcontentsline{toc}{section}{\listtablename}
-\listoftables \pagebreak
 
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{3}
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\titleformat{\subparagraph}
+{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
+\titlespacing*{\subparagraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\contentsname}{\begin{center}Contents\end{center}}
+\tableofcontents \pagebreak
+\setlength{\cftfigindent}{0pt}
+\setlength{\cfttabindent}{0pt}
+\renewcommand{\cftfigpresnum}{Figure~}
+\renewcommand{\cftfignumwidth}{5em}
+\renewcommand{\cfttabpresnum}{Table~}
+\renewcommand{\cfttabnumwidth}{4.5em}
+
+
+\listoffigures \pagebreak
+
+\listoftables \pagebreak
+\setlength{\footskip}{40pt} %set page number distance from content
 \pagenumbering{arabic} %\mainmatter
+
+%hyphen page numbers
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\fontsize{10pt}{10pt}\selectfont-~\thepage~-}% set font to 10
+  \renewcommand*{\headrulewidth}{0pt}%
+  \renewcommand*{\footrulewidth}{0pt}%
+}
+\pagestyle{plain}
+
 \setstretch{1.85}  % Times New Roman 12pt
+\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{section}.\arabic{table}}
 \justifying
+\setcounter{figure}{0}
+\setcounter{table}{0}
 \input{tex/introduction} \pagebreak
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\input{tex/sections} \pagebreak
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\input{tex/adding_equations} \pagebreak
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\input{tex/adding_refs} \pagebreak
 \input{tex/conclusion.tex} \pagebreak
 
 %\section*{References}
@@ -64,6 +112,6 @@
 \pagebreak
 
 \input{tex/abstract_english.tex} \pagebreak
-\input{tex/abstract_korean.tex}
+\input{tex/abstract_korean.tex} \pagebreak
 
 \end{document}
