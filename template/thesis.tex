@@ -46,33 +46,13 @@
 \pagenumbering{roman} %\frontmatter
 \setstretch{1.5}
 
-\setcounter{secnumdepth}{5}
-\setcounter{tocdepth}{3}
-\titleformat{\paragraph}
-{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
-\titlespacing*{\paragraph}
-{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-
-\titleformat{\subparagraph}
-{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
-\titlespacing*{\subparagraph}
-{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-
-\renewcommand{\cftsecaftersnum}{.}
-\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-\renewcommand{\contentsname}{\begin{center}Contents\end{center}}
 \tableofcontents \pagebreak
-\setlength{\cftfigindent}{0pt}
-\setlength{\cfttabindent}{0pt}
-\renewcommand{\cftfigpresnum}{Figure~}
-\renewcommand{\cftfignumwidth}{5em}
-\renewcommand{\cfttabpresnum}{Table~}
-\renewcommand{\cfttabnumwidth}{4.5em}
-
-
 \listoffigures \pagebreak
-
 \listoftables \pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page numbering: change to arabic numbers %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setlength{\footskip}{40pt} %set page number distance from content
 \pagenumbering{arabic} %\mainmatter
 
@@ -89,15 +69,22 @@
 \renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
 \renewcommand{\thetable}{\arabic{section}.\arabic{table}}
 \justifying
+
+%%%%%%%%%%%%%%%%%%%%
+% Rest of document %
+%%%%%%%%%%%%%%%%%%%%
 \setcounter{figure}{0}
 \setcounter{table}{0}
 \input{tex/introduction} \pagebreak
+
 \setcounter{figure}{0}
 \setcounter{table}{0}
 \input{tex/sections} \pagebreak
+
 \setcounter{figure}{0}
 \setcounter{table}{0}
 \input{tex/adding_equations} \pagebreak
+
 \setcounter{figure}{0}
 \setcounter{table}{0}
 \input{tex/adding_refs} \pagebreak
