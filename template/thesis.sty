@@ -5,9 +5,9 @@
 % and
 % (c) Dennis Singh Moirangthem (mdennissingh@gmail.com)
 %
-% Compile with XeLatex
-%
-% Please note that this was not made for monetary purposes and it is free for anyone to use. However, if you do use it or modify it, please acknowledge this work by mentioning this original source code.
+% Please note:
+%    1. Compile with XeLatex
+%    2. This was not made for monetary purposes and it is free for anyone to use. However, if you do use it or modify it, please acknowledge this work by mentioning this original source code.
 %
 
 %%%%% My notes %%%%%
@@ -17,7 +17,7 @@
   [2020/03/21 v0.01 LaTeX package for KNU's Ph.D. Thesis]
 
 % Document spacing
-\RequirePackage[paperheight=11.69in,paperwidth=8.27in,left=1.57in,right=1.57in,top=1.5in,bottom=1.5in,headheight=1in]{geometry}
+\RequirePackage[paperheight=11.69in,paperwidth=8.27in,left=1.57in,right=1.57in,top=1.8in,bottom=1.9in,headheight=1in]{geometry}
 
 %%%%%%%%%%%%
 % Packages %
@@ -34,14 +34,18 @@
 \RequirePackage{times} %\setmainfont{Times New Roman}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{kotex} % for korean text
+\RequirePackage[subfigure]{tocloft}
 \RequirePackage{titlesec}
+\RequirePackage{chngpage}
+\RequirePackage{fontspec}
 \RequirePackage{slantsc} % http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/slantsc/slantsc.pdf
 \RequirePackage{bold-extra} % allows for bfseries and scshape to be used together
-\renewcommand{\thesection}{\Roman{section}.}
+
+\renewcommand{\thesection}{\Roman{section}}
 \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
 \titleformat{\section}
-  {\fontsize{18pt}{21.6pt}\centering\bfseries\scshape}{\thesection}{1em}{}
+  {\fontsize{18pt}{21.6pt}\centering\bfseries\scshape}{\thesection.}{1em}{}
 
 %%%%%%%%%%%%%%%%
 % Custom fonts %
@@ -60,10 +64,14 @@
 %%%%%%%%%%%%%%%%
 
 % Title font
-\newfontfamily{\titlefontfamily}{Batang}[Extension = .ttf, Path = fonts/, UprightFont = *-R, BoldFont = *-BD, ItalicFont = unbatang-IT, Ligatures=TeX]
-\newcommand*{\titlefontregular}{\titlefontfamily\mdseries}
-\newcommand*{\titlefont}{\titlefontfamily\bfseries}
-\newcommand*{\titlefontit}{\titlefontfamily\itshape}
+
+\newfontfamily{\titlefontfamily}{batang}[Extension = .ttc, Path = fonts/]
+\newfontfamily{\titlefontitfamily}{unbatang-IT}[Extension = .ttf, Path = fonts/, Ligatures=TeX]
+
+
+\newcommand*{\titlefontregular}{\titlefontfamily}
+\newcommand*{\titlefont}{\titlefontfamily\addfontfeatures{FakeBold=2}}
+\newcommand*{\titlefontit}{\titlefontitfamily\itshape}
 
 % Footer font
 \newfontfamily{\footerfontfamily}{malgungothic}[Extension = .ttf, Path = fonts/, UprightFont = *-R, BoldFont = *-BD, ItalicFont = *-IT, Ligatures=TeX]
@@ -84,18 +92,27 @@
   \begin{titlepage}
   \vspace{\baselineskip}
   \begin{Center}
-  \textbf{Thesis for the Degree of Ph.D.}\par
+%   \setmainfont{Times}
+  \textbf{Thesis for the Degree of Ph. D.}\par
+%   \fontsize{12pt}{25.2pt}
+%   \titleheaderfont{Thesis for the Degree of Ph}\titlefontregular{.}\titleheaderfont{ D}\titlefontregular{.}\par
   \end{Center}
 
   % Title
   \vspace{\baselineskip}
   \vspace{\baselineskip}
-  \vspace{\baselineskip}
+%   \vspace{\baselineskip}
+%   \vspace{\baselineskip}
+  \begin{adjustwidth}{-2cm}{-2cm}
   \begin{Center}
-  \setstretch{1.5}{\fontsize{21pt}{25.2pt}\titlefont{\@title}\par}
+  \setstretch{1.5}{\fontsize{21pt}{25.2pt}\titlefont{\textbf{\@title}}\par}
   \end{Center}\par
+  \end{adjustwidth}
+
 
   % Department
+  \vspace{\baselineskip}
+  \vspace{\baselineskip}
   \vspace{\baselineskip}
   \vspace{\baselineskip}
   \begin{Center}
@@ -110,14 +127,16 @@
    \vspace{\baselineskip}
    \vspace{\baselineskip}
    \begin{Center}
-    {\fontsize{14pt}{16.8pt}\titlefont{\@author}\par}
+    {\fontsize{14pt}{16.8pt}\titlefont{\textbf{\@author}}\par}
    \end{Center}\par
+   \vspace{\baselineskip}
+   \vspace{\baselineskip}
    \vspace*{\fill}
 
    % Date
    \begin{Center}
-   {\DTMlangsetup[en-US]{showdayofmonth=false}
-   \fontsize{12pt}{14.8pt}\titlefont{\today}}
+   %{\DTMlangsetup[en-US]{showdayofmonth=false}
+   \fontsize{12pt}{14.8pt}\titlefont{\textbf{June 2020}}%}
    \end{Center}\par
 
    % Graduate School and University name
@@ -146,9 +165,11 @@
 
     \vspace{\baselineskip}
     \vspace{\baselineskip}
+    \begin{adjustwidth}{-2cm}{-2cm}
     \begin{Center}
     \setstretch{1.1}{\fontsize{21pt}{25.2pt}\titlefont{\@title}\par}
     \end{Center}
+    \end{adjustwidth}
 
     \vspace{0.3cm}
     \setstretch{1}
@@ -169,13 +190,19 @@
     {\fontsize{12pt}{14.8pt}\titlefont Approved as a qualified thesis of \@author \\ for the degree of Ph.D. by the Evaluation Committee}
     \end{Center}
 
-    \begin{Center}
-        {\DTMlangsetup[en-US]{showdayofmonth=false}
-       \fontsize{12pt}{14.8pt}\titlefont\textbf{\today}}
-    \end{Center}
+    % \begin{Center}
+    %     {\DTMlangsetup[en-US]{showdayofmonth=false}
+    %   \fontsize{12pt}{14.8pt}\titlefont\textbf{\today}}
+    % \end{Center}
+
+       % Date
+   \begin{Center}
+   %{\DTMlangsetup[en-US]{showdayofmonth=false}
+   \fontsize{12pt}{14.8pt}\titlefont{June 2020}%}
+   \end{Center}
 
     \vspace{\baselineskip}
-    \vspace{\baselineskip}
+    % \vspace{\baselineskip}
     \vspace{\baselineskip}
 
     % Committee members
@@ -189,8 +216,11 @@
             & \underline{\makebox[2in][c]{\fontsize{12pt}{14.8pt}\titlefont \@profE}}\\
         \end{tabular}
     \end{flushright}
+    \vspace{\baselineskip}
+    % \vspace{\baselineskip}
+    \vspace{\baselineskip}
 
-    \vspace*{\fill}
+
     \setstretch{1.2}
     \begin{Center}
     {\fontsize{14pt}{16.8pt}\titlefont The Graduate School Council \\  Kyungpook National University}
